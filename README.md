@@ -15,10 +15,6 @@ Bu yapılandırma şunları içerir:
 
 ### Dizin Yapısı
 
-.
-├── docker-compose.yml
-└── haproxy.cfg
-
 Home dizini altında  `web` ve `haproxy` adlı iki klasör oluşturalım. HaProxy klasörü altında bir tane `haproxy.cfg` dosyası oluşturup repo üzerindeki `haproxy.cfg` dosyasının içeriğini yapıştıralım.
 
 ### haproxy.cfg dosya içeriği:
