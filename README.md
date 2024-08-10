@@ -1,6 +1,6 @@
 # Docker Clustered Web Architecture
 
-![image](https://github.com/user-attachments/assets/9e7e4523-1acc-4b6d-80df-7821d961c569)# Docker Clustered Web Architecture
+![image](https://github.com/user-attachments/assets/9e7e4523-1acc-4b6d-80df-7821d961c569)
 
 
 Sistem, PHP tabanlı web uygulamalarını barındırmak üzere üç ayrı konteynerden oluşur. Her bir PHP konteyneri, Apache web sunucusunu ve PHP’yi çalıştırır. Bu konteynerler, /var/www/html/ dizininde saklanan PHP dosyalarını sunar. Her konteyner, belirli bir port üzerinden erişilebilir. Örneğin, ilk konteyner (web1) 80 numaralı portu 3180 numaralı port ile eşleştirirken, diğer konteynerler farklı portlarla yapılandırılmıştır.
