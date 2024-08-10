@@ -3,6 +3,7 @@
 ![image](https://github.com/user-attachments/assets/9e7e4523-1acc-4b6d-80df-7821d961c569)
 
 
+
 Sistem, PHP tabanlı web uygulamalarını barındırmak üzere üç ayrı konteynerden oluşur. Her bir PHP konteyneri, Apache web sunucusunu ve PHP’yi çalıştırır. Bu konteynerler, /var/www/html/ dizininde saklanan PHP dosyalarını sunar. Her konteyner, belirli bir port üzerinden erişilebilir. Örneğin, ilk konteyner (web1) 80 numaralı portu 3180 numaralı port ile eşleştirirken, diğer konteynerler farklı portlarla yapılandırılmıştır.
 
 HAProxy, bu üç konteyner arasında yük dengelemesi yapmak için kullanılır. HAProxy, gelen HTTP isteklerini alır ve bu istekleri arka planda çalışan PHP konteynerlerine dağıtır. Bu dağıtım işlemi, HAProxy'nin yük dengeleme algoritmalarına dayanır; bu örnekte, istekler roundrobin (dönüşümlü) yöntemiyle dağıtılır. HAProxy, aynı zamanda SSL/TLS desteği sağlayabilir ve HTTP trafiğini dinleyerek istekleri uygun konteynere yönlendirir.
