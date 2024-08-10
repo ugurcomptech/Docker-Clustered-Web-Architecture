@@ -15,6 +15,7 @@ Bu yapılandırma şunları içerir:
 
 ### Dizin Yapısı
 
+.
 ├── docker-compose.yml
 └── haproxy.cfg
 
