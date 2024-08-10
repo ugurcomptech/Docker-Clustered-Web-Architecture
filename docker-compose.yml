@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  web1:
+    image: php:7.4-apache
+    container_name: web1
+    volumes:
+      - /home/web:/var/www/html/
+    ports:
+      - "3180:80"
+    networks:
+      - webnet
+
+  web2:
+    image: php:7.4-apache
+    container_name: web2
+    volumes:
+      - /home/web:/var/www/html/
+    ports:
+      - "3181:80"
+    networks:
+      - webnet
+
+  web3:
+    image: php:7.4-apache
+    container_name: web3
+    volumes:
+      - /home/web:/var/www/html/
+    ports:
+      - "3281:80"
+    networks:
+      - webnet
+
+  haproxy:
+    image: haproxy:2.3
+    container_name: haproxy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /home/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    sysctls:
+      - net.ipv4.ip_unprivileged_port_start=0
+    networks:
+      - webnet
+
+networks:
+  webnet:
