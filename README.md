@@ -88,6 +88,135 @@ Her F5 attığnız da Container ID değerinin değiştiğini göreceksiniz.
 
 
 
+## SSL 
+
+Şimdi bu yapımız için bir tane SSL sertifikası kuracağız. Sunucumuza Cerbotu kurarak başlıyoruz.
+
+```
+sudo apt install certbot
+```
+
+Certbot'u kullanarak SSL sertifikası oluşturmak için aşağıdaki komutu yazıyoruz. Komutu yazmadan önce HaProxy containerını durdurmamız gerekiyor. `docker container rm haproxy -f` yazarak kaldırabilirsiniz.
+
+```
+sudo certbot certonly --standalone -d domain.com -d www.domain.com
+```
+
+Burada, domain.com ve www.domain.com kendi domain adresinle değiştirilmeli. Bu komut, bir SSL sertifikası oluşturur ve sertifika dosyalarını /etc/letsencrypt/live/domain.com/ dizininde saklar.
+
+
+### Sertifikayı HAProxy İçin Hazırlama
+
+Let's Encrypt, sertifikaları .pem formatında sağlar. Bu dosyaları HAProxy için tek bir .pem dosyasında birleştirmen gerekiyor:
+
+```
+sudo cat /etc/letsencrypt/live/domain.com/fullchain.pem /etc/letsencrypt/live/domain.com/privkey.pem > /etc/letsencrypt/live/domain.com/haproxy.pem
+```
+
+### Docker'da HAProxy İçin Sertifikayı Ayarlama
+
+Docker Compose dosyanda sertifikayı HAProxy konteynerine mount etmeniz gerekiyor:
+
+```
+version: '3'
+
+services:
+  web1:
+    image: php:7.4-apache
+    container_name: web1
+    volumes:
+      - /home/web:/var/www/html/
+    ports:
+      - "3180:80"
+    networks:
+      - webnet
+
+  web2:
+    image: php:7.4-apache
+    container_name: web2
+    volumes:
+      - /home/web:/var/www/html/
+    ports:
+      - "3181:80"
+    networks:
+      - webnet
+
+  web3:
+    image: php:7.4-apache
+    container_name: web3
+    volumes:
+      - /home/web:/var/www/html/
+    ports:
+      - "3281:80"
+    networks:
+      - webnet
+
+  web4:
+    image: php:7.4-apache
+    container_name: web4
+    volumes:
+      - /home/web:/var/www/html/
+    ports:
+      - "3282:80"
+    networks:
+      - webnet
+
+  haproxy:
+    image: haproxy:2.3
+    container_name: haproxy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /home/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      - /etc/letsencrypt/live/domain.com/haproxy.pem:/etc/letsencrypt/live/domain.com/haproxy.pem:ro
+    sysctls:
+      - net.ipv4.ip_unprivileged_port_start=0
+    networks:
+      - webnet
+
+networks:
+  webnet:
+
+```
+
+### 5. HAProxy Konfigürasyonunu Güncelleme
+
+haproxy.cfg dosyasını aşağıdaki gibi düzenleyiniz:
+
+```
+frontend web
+  bind *:80
+  bind *:443 ssl crt /etc/letsencrypt/live/domain.com/haproxy.pem
+  redirect scheme https if !{ ssl_fc }
+  default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    server web1 web1:80 check
+    server web2 web2:80 check
+    server web3 web3:80 check
+    server web4 web4:80 check
+
+```
+
+### Docker Compose'u Yeniden Başlatma
+
+Yapılandırmayı tamamladıktan sonra Docker Compose'u yeniden başlat:
+
+```
+docker-compose down
+docker-compose up -d
+```
+
+
+Başarılı bir şekilde SSL kurulumunu gerçekleştirdik.
+
+![image](https://github.com/user-attachments/assets/ef348b3d-645e-43aa-b3a4-71e6d097ca7f)
+
+
+
 ---------------------------------------------------------------
 
 Okuduğunuz için teşekkürler.
