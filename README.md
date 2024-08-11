@@ -69,7 +69,7 @@ root@ip-172-31-34-227:/home/web# docker-compose up -d
 root@ip-172-31-34-227:/home/web# 
 ```
 
-IP adresinize giderek `IT's Work` yazısını görebilirsiniz. İçeriği değiştirmek için daha önce oluşturmuş olduğumuz Home dizini altındaki web dizinin altında `index.php` dosyasını oluşturup repo üzerindeki `index.php` dosyasının içeriğini kopyalayıp oluşturduğumuz dosyaya yapıştırıyoruz.
+IP adresinize giderek `IT's Work` yazısını görebilirsiniz. İçeriği değiştirmek için daha önce oluşturmuş olduğumuz Home dizini altındaki web dizinin altında `index.php` dosyasını oluşturup repo üzerindeki `index` dosyasının içeriğini kopyalayıp oluşturduğumuz dosyaya yapıştırıyoruz.
 
 
 ![image](https://github.com/user-attachments/assets/dde3cb83-0ea0-41fd-a097-8e0943b75e38)
