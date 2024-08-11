@@ -1,12 +1,5 @@
 # Docker Clustered Web Architecture
 
-
-
-![DALL·E 2024-08-11 17 25 26 - A system architecture diagram similar to the one shown  The diagram should feature a cloud labeled 'INTERNET' at the top, with an arrow pointing down ](https://github.com/user-attachments/assets/6e6fd2f3-74b2-46bc-aa25-25b9c7525f20)
-
-
-Sistem, PHP tabanlı web uygulamalarını barındırmak üzere üç ayrı konteynerden oluşur. Her bir PHP konteyneri, Apache web sunucusunu ve PHP’yi çalıştırır. Bu konteynerler, /var/www/html/ dizininde saklanan PHP dosyalarını sunar. Her konteyner, belirli bir port üzerinden erişilebilir. Örneğin, ilk konteyner (web1) 80 numaralı portu 3180 numaralı port ile eşleştirirken, diğer konteynerler farklı portlarla yapılandırılmıştır.
-
 HAProxy, bu üç konteyner arasında yük dengelemesi yapmak için kullanılır. HAProxy, gelen HTTP isteklerini alır ve bu istekleri arka planda çalışan PHP konteynerlerine dağıtır. Bu dağıtım işlemi, HAProxy'nin yük dengeleme algoritmalarına dayanır; bu örnekte, istekler roundrobin (dönüşümlü) yöntemiyle dağıtılır. HAProxy, aynı zamanda SSL/TLS desteği sağlayabilir ve HTTP trafiğini dinleyerek istekleri uygun konteynere yönlendirir.
 
 Bu mimari, yüksek erişilebilirlik ve yük dengelemesi sağlayarak, web uygulamanızın daha hızlı ve daha güvenilir bir şekilde çalışmasını mümkün kılar. PHP konteynerlerinin birbirinden bağımsız olması, herhangi bir konteynerin başarısız olması durumunda diğerlerinin hizmet vermeye devam etmesini sağlar. HAProxy’nin yük dengeleme özelliği ise trafik yoğunluğunu verimli bir şekilde dağıtarak sistem performansını optimize eder.
