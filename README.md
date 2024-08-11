@@ -1,7 +1,8 @@
 # Docker Clustered Web Architecture
 
 
-![DALL·E-2024-08-11-22 19](https://github.com/user-attachments/assets/81818604-a625-41b1-919e-451635318cfe)
+![Yeni Proje](https://github.com/user-attachments/assets/cf2c7282-6b68-4e26-a8f1-b08375c21f7f)
+
 
 HAProxy, bu üç konteyner arasında yük dengelemesi yapmak için kullanılır. HAProxy, gelen HTTP isteklerini alır ve bu istekleri arka planda çalışan PHP konteynerlerine dağıtır. Bu dağıtım işlemi, HAProxy'nin yük dengeleme algoritmalarına dayanır; bu örnekte, istekler roundrobin (dönüşümlü) yöntemiyle dağıtılır. HAProxy, aynı zamanda SSL/TLS desteği sağlayabilir ve HTTP trafiğini dinleyerek istekleri uygun konteynere yönlendirir.
 
