@@ -55,7 +55,7 @@
         <?php
         // Hostname ve IP adresini al
         $hostname = gethostname();
-        $ip_address = getenv('SERVER_ADDR'); // Alternatif: $_SERVER['REMOTE_ADDR']
+        $ip_address = getenv('SERVER_ADDR'); 
 
         // Verileri ekrana yazdır
         echo "<h1>Container Bilgileri</h1>";
