@@ -67,21 +67,10 @@ root@ip-172-31-34-227:/home/web# docker-compose up -d
 root@ip-172-31-34-227:/home/web# 
 ```
 
-IP adresinize giderek `IT's Work` yazısını görebilirsiniz. İçeriği değiştirmek için daha önce oluşturmuş olduğumuz Home dizini altındaki web dizinin altında `index.php` dosyasını oluşturup aşağıdaki kodu yazıyoruz.
+IP adresinize giderek `IT's Work` yazısını görebilirsiniz. İçeriği değiştirmek için daha önce oluşturmuş olduğumuz Home dizini altındaki web dizinin altında `index.php` dosyasını oluşturup repo üzerindeki `index.php` dosyasının içeriğini kopyalayıp oluşturduğumuz dosyaya yapıştırıyoruz.
 
-```
-<?php
-// Hostname ve IP adresini al
-$hostname = gethostname();
-$ip_address = getenv('SERVER_ADDR'); 
-// Verileri ekrana yazdır
-echo "<h1>Container Bilgileri</h1>";
-echo "<p><strong>Hostname:</strong> $hostname</p>";
-echo "<p><strong>IP Adresi:</strong> $ip_address</p>";
-?>
-```
 
-![image](https://github.com/user-attachments/assets/815cf816-0931-4223-995f-2d1bbbf7c81c)
+![image](https://github.com/user-attachments/assets/dde3cb83-0ea0-41fd-a097-8e0943b75e38)
 
 
 Her F5 attığnız da Container ID değerinin değiştiğini göreceksiniz.
