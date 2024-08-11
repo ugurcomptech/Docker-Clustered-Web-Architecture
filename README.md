@@ -181,7 +181,7 @@ networks:
 
 ```
 
-### 5. HAProxy Konfigürasyonunu Güncelleme
+### HAProxy Konfigürasyonunu Güncelleme
 
 haproxy.cfg dosyasını aşağıdaki gibi düzenleyiniz:
 
