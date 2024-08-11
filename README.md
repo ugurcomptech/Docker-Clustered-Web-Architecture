@@ -10,6 +10,8 @@ HAProxy, bu üç konteyner arasında yük dengelemesi yapmak için kullanılır.
 
 Bu mimari, yüksek erişilebilirlik ve yük dengelemesi sağlayarak, web uygulamanızın daha hızlı ve daha güvenilir bir şekilde çalışmasını mümkün kılar. PHP konteynerlerinin birbirinden bağımsız olması, herhangi bir konteynerin başarısız olması durumunda diğerlerinin hizmet vermeye devam etmesini sağlar. HAProxy’nin yük dengeleme özelliği ise trafik yoğunluğunu verimli bir şekilde dağıtarak sistem performansını optimize eder.
 
+Test sağlamanız açısından isterseniz https://docker.amigdala.net.tr web sitesine giriş yapabilirsiniz.
+
 
 ## Kurulum
 
