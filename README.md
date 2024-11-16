@@ -11,6 +11,7 @@ Bu mimari, yüksek erişilebilirlik ve yük dengelemesi sağlayarak, web uygulam
 Test sağlamanız açısından isterseniz https://docker.amigdala.net.tr web sitesine giriş yapabilirsiniz.
 
 
+
 ## Kurulum
 
 Bu yapılandırma şunları içerir:
